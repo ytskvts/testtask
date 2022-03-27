@@ -8,7 +8,7 @@
 import Foundation
 
 struct Cocktail: Codable {
-  let cocktailName: String
+  let cocktailName: String?
 }
 
 struct Cocktails: Codable {
