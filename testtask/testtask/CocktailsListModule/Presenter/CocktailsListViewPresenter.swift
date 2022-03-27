@@ -15,7 +15,11 @@ class CocktailsListViewPresenter: CocktailsListViewPresenterProtocol {
         self.view = view
     }
     
-    var cocktails = [Cocktail]()
+    var cocktails: [Cocktail] = [] {
+        didSet {
+            view?.printData(data: cocktails)
+        }
+    }
     
     
     
@@ -26,7 +30,7 @@ class CocktailsListViewPresenter: CocktailsListViewPresenterProtocol {
         NetworkManager.shared.fetchData(type: Cocktails.self) { result in
             switch result {
             case .success(let cocktailsData):
-                self.cocktails = cocktailsData.cocktails
+                self.cocktails = cocktailsData.cocktailsList
                 //self.collectionView.reloadData()
             case .failure(let error):
                 print(error)

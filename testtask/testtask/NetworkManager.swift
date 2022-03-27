@@ -25,8 +25,8 @@ class NetworkManager {
 //    }
     
     func fetchData<T: Decodable>(type: T.Type, completion: @escaping (Result<T, NetworkManagerErrorType>) -> Void) {
-        AF.request(defaultURLString).responseJSON { respone in
-            guard let rawData = respone.data else {
+        AF.request(defaultURLString).responseJSON { response in
+            guard let rawData = response.data else {
                 completion(.failure(.missingData))
                 return
             }

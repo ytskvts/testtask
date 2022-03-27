@@ -132,10 +132,10 @@
 		D5CBB6BF27F0BC8D00C5D593 /* testtask */ = {
 			isa = PBXGroup;
 			children = (
-				D5AAC2B227F0E33100A31DA2 /* Resources */,
 				D5AAC2A727F0D3E600A31DA2 /* CocktailsListModule */,
-				D5CBB6C027F0BC8D00C5D593 /* AppDelegate.swift */,
 				D5AAC2A527F0D04B00A31DA2 /* NetworkManager.swift */,
+				D5CBB6C027F0BC8D00C5D593 /* AppDelegate.swift */,
+				D5AAC2B227F0E33100A31DA2 /* Resources */,
 			);
 			path = testtask;
 			sourceTree = "<group>";

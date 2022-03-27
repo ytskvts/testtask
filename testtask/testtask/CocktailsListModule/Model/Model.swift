@@ -8,9 +8,17 @@
 import Foundation
 
 struct Cocktail: Codable {
-  let cocktailName: String?
+    let name: String
+    
+    enum CodingKeys: String, CodingKey {
+        case name = "strDrink"
+    }
 }
 
 struct Cocktails: Codable {
-    let cocktails: [Cocktail]
+    let cocktailsList: [Cocktail]
+    
+    enum CodingKeys: String, CodingKey {
+        case cocktailsList = "drinks"
+    }
 }

@@ -25,8 +25,13 @@ class CocktailsListViewController: UIViewController, CocktailsListViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cocktailsListViewPresenter?.fetchData()
         view.backgroundColor = .systemRed
         
+    }
+    
+    func printData(data: [Cocktail]) {
+        print(data)
     }
 
 }
