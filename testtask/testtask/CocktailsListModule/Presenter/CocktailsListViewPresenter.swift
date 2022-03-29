@@ -15,9 +15,10 @@ class CocktailsListViewPresenter: CocktailsListViewPresenterProtocol {
         self.view = view
     }
     
-    var cocktails: [Cocktail] = [] {
+    var cocktails: [CoctailCollectionCellModel] = [] {
         didSet {
             view?.printData(data: cocktails)
+            //self.collectionView.reloadData()
         }
     }
     
@@ -30,8 +31,12 @@ class CocktailsListViewPresenter: CocktailsListViewPresenterProtocol {
         NetworkManager.shared.fetchData(type: Cocktails.self) { result in
             switch result {
             case .success(let cocktailsData):
-                self.cocktails = cocktailsData.cocktailsList
-                //self.collectionView.reloadData()
+                //better add parser
+                self.cocktails = cocktailsData.cocktailsList.compactMap({
+                    print("-")
+                    return CoctailCollectionCellModel(name: $0.name, isSelect: false)
+                })
+                //self.cocktails = cocktailsData.cocktailsList
             case .failure(let error):
                 print(error)
             }

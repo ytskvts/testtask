@@ -30,7 +30,7 @@ class CocktailsListViewController: UIViewController, CocktailsListViewProtocol {
         
     }
     
-    func printData(data: [Cocktail]) {
+    func printData(data: [CoctailCollectionCellModel]) {
         print(data)
     }
 

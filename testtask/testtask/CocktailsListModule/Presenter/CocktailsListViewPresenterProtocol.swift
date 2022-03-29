@@ -9,7 +9,7 @@ import Foundation
 
 protocol CocktailsListViewPresenterProtocol {
     
-    var cocktails: [Cocktail] { get set }
+    var cocktails: [CoctailCollectionCellModel] { get set }
     
     func fetchData()
 }
