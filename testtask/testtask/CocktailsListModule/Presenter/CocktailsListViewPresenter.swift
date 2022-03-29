@@ -15,10 +15,9 @@ class CocktailsListViewPresenter: CocktailsListViewPresenterProtocol {
         self.view = view
     }
     
-    var cocktails: [CoctailCollectionCellModel] = [] {
+    var cocktails: [CocktailCollectionCellModel] = [] {
         didSet {
-            view?.printData(data: cocktails)
-            //self.collectionView.reloadData()
+            view?.printData(data: cocktails) //self.collectionView.reloadData()
         }
     }
     
@@ -33,13 +32,25 @@ class CocktailsListViewPresenter: CocktailsListViewPresenterProtocol {
             case .success(let cocktailsData):
                 //better add parser
                 self.cocktails = cocktailsData.cocktailsList.compactMap({
-                    print("-")
-                    return CoctailCollectionCellModel(name: $0.name, isSelect: false)
+                    return CocktailCollectionCellModel(name: $0.name, isSelect: false)
                 })
                 //self.cocktails = cocktailsData.cocktailsList
             case .failure(let error):
                 print(error)
             }
         }
+    }
+    
+    func getCocktail(forItemAt indexPath: IndexPath) -> CocktailCollectionCellModel {
+        return cocktails[indexPath.row]
+    }
+    
+    func getAmountOfItemsInSection(in section: Int) -> Int {
+        return cocktails.count
+    }
+    
+    func didSelectItem(at indexPath: IndexPath) {
+        cocktails[indexPath.row].isSelect = true
+        //cocktails[indexPath.row].isSelect = true //if need to cancel gradient
     }
 }

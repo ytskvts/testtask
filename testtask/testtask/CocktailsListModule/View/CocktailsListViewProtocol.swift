@@ -9,5 +9,5 @@ import Foundation
 
 protocol CocktailsListViewProtocol: AnyObject {
     
-    func printData(data: [CoctailCollectionCellModel])
+    func printData(data: [CocktailCollectionCellModel])
 }

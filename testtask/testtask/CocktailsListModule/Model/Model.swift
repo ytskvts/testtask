@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CoctailCollectionCellModel {
+struct CocktailCollectionCellModel {
     let name: String
-    let isSelect: Bool
+    var isSelect: Bool
 }
