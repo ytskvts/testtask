@@ -22,6 +22,10 @@ class CocktailsListViewPresenter: CocktailsListViewPresenterProtocol {
     }
     
     func textDidChange(text: String) {
+        doSearch(with: text)
+    }
+    
+    func doSearch(with text: String) {
         cocktails.indices.forEach { index in
             cocktails[index].isSearchable = cocktails[index].name.lowercased().contains(text.lowercased())
         }

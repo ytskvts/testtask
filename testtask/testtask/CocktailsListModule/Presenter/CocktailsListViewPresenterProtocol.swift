@@ -13,11 +13,11 @@ protocol CocktailsListViewPresenterProtocol {
     
     func fetchData()
     
-    func getCocktail(forItemAt indexPath: IndexPath) -> CocktailCollectionCellModel
-    
     func textDidChange(text: String)
     
     //collection
+    
+    func getCocktail(forItemAt indexPath: IndexPath) -> CocktailCollectionCellModel
     
     func getAmountOfItemsInSection(in section: Int) -> Int
     

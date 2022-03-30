@@ -27,7 +27,7 @@ class NetworkManager {
                 return
             }
             do {
-                let cocktailsData = try JSONDecoder().decode(T.self, from: rawData)
+                let cocktailsData = try JSONDecoder().decode(type, from: rawData)
                 DispatchQueue.main.async {
                     completion(.success(cocktailsData))
                 }

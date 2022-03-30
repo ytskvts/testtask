@@ -17,6 +17,7 @@
 		D5AAC2B527F36A4100A31DA2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAC2B427F36A4100A31DA2 /* Model.swift */; };
 		D5AAC2B727F37F4A00A31DA2 /* CocktailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAC2B627F37F4A00A31DA2 /* CocktailsCollectionViewCell.swift */; };
 		D5B75AA627F4BD510076F6BD /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B75AA527F4BD510076F6BD /* Constant.swift */; };
+		D5B75AA927F4CFC40076F6BD /* SearchingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B75AA827F4CFC40076F6BD /* SearchingTextField.swift */; };
 		D5CBB6C127F0BC8D00C5D593 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CBB6C027F0BC8D00C5D593 /* AppDelegate.swift */; };
 		D5CBB6C527F0BC8D00C5D593 /* CocktailsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CBB6C427F0BC8D00C5D593 /* CocktailsListViewController.swift */; };
 		D5CBB6CA27F0BC9100C5D593 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5CBB6C927F0BC9100C5D593 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		D5AAC2B427F36A4100A31DA2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D5AAC2B627F37F4A00A31DA2 /* CocktailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		D5B75AA527F4BD510076F6BD /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		D5B75AA827F4CFC40076F6BD /* SearchingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingTextField.swift; sourceTree = "<group>"; };
 		D5CBB6BD27F0BC8D00C5D593 /* testtask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testtask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5CBB6C027F0BC8D00C5D593 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5CBB6C427F0BC8D00C5D593 /* CocktailsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsListViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				D5530ED127F45814006C8132 /* GradientView.swift */,
+				D5B75AA827F4CFC40076F6BD /* SearchingTextField.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				D5AAC2B727F37F4A00A31DA2 /* CocktailsCollectionViewCell.swift in Sources */,
 				D5AAC2AE27F0D48B00A31DA2 /* CocktailsListViewPresenter.swift in Sources */,
 				D5CBB6C527F0BC8D00C5D593 /* CocktailsListViewController.swift in Sources */,
+				D5B75AA927F4CFC40076F6BD /* SearchingTextField.swift in Sources */,
 				D5AAC2A427F0BFAE00A31DA2 /* NetworkModel.swift in Sources */,
 				D5530ED227F45814006C8132 /* GradientView.swift in Sources */,
 				D5CBB6C127F0BC8D00C5D593 /* AppDelegate.swift in Sources */,

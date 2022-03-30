@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CocktailsListViewController: UIViewController, CocktailsListViewProtocol {
+class CocktailsListViewController: UIViewController {
 
     var cocktailsListViewPresenter: CocktailsListViewPresenterProtocol?
         
@@ -31,19 +31,11 @@ class CocktailsListViewController: UIViewController, CocktailsListViewProtocol {
     }()
     
     private let searchingTextField: UITextField = {
-        let textField = UITextField()
+        let textField = SearchingTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Cocktail name"
         //textField.autocapitalizationType = .words //all words uppercase
-        textField.textAlignment = .center
-        textField.backgroundColor = .white
-        textField.layer.cornerRadius = 10
-        textField.layer.shadowRadius = 9
-        textField.layer.shadowOpacity = 0.3
-        textField.layer.shadowOffset = CGSize(width: 5.0, height: 8.0)
         textField.clipsToBounds = false
-        
-        textField.autocorrectionType = .no
         return textField
     }()
     
@@ -77,7 +69,7 @@ class CocktailsListViewController: UIViewController, CocktailsListViewProtocol {
         cocktailsCollectionView.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(5)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(5)
-            make.bottom.equalTo(searchingTextField.snp.top).inset(-20)
+            make.bottom.equalTo(searchingTextField.snp.top).inset(-5)
         }
     }
     
@@ -142,7 +134,9 @@ class CocktailsListViewController: UIViewController, CocktailsListViewProtocol {
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
-    
+}
+
+extension CocktailsListViewController: CocktailsListViewProtocol {
     func reloadCollectionViewData(data: [CocktailCollectionCellModel]) {
         cocktailsCollectionView.reloadData()
     }
