@@ -17,14 +17,15 @@ class CocktailsListViewPresenter: CocktailsListViewPresenterProtocol {
     
     var cocktails: [CocktailCollectionCellModel] = [] {
         didSet {
-            view?.printData(data: cocktails) //self.collectionView.reloadData()
+            view?.reloadCollectionViewData(data: cocktails)
         }
     }
     
-    
-    
-    
-    
+    func textDidChange(text: String) {
+        cocktails.indices.forEach { index in
+            cocktails[index].isSearchable = cocktails[index].name.lowercased().contains(text.lowercased())
+        }
+    }
     
     func fetchData() {
         NetworkManager.shared.fetchData(type: Cocktails.self) { result in
@@ -32,14 +33,15 @@ class CocktailsListViewPresenter: CocktailsListViewPresenterProtocol {
             case .success(let cocktailsData):
                 //better add parser
                 self.cocktails = cocktailsData.cocktailsList.compactMap({
-                    return CocktailCollectionCellModel(name: $0.name, isSelect: false)
+                    return CocktailCollectionCellModel(name: $0.name, isSelect: false, isSearchable: false)
                 })
-                //self.cocktails = cocktailsData.cocktailsList
             case .failure(let error):
                 print(error)
             }
         }
     }
+    
+    //MARK: CollectionView
     
     func getCocktail(forItemAt indexPath: IndexPath) -> CocktailCollectionCellModel {
         return cocktails[indexPath.row]
@@ -50,7 +52,7 @@ class CocktailsListViewPresenter: CocktailsListViewPresenterProtocol {
     }
     
     func didSelectItem(at indexPath: IndexPath) {
-        cocktails[indexPath.row].isSelect = true
-        //cocktails[indexPath.row].isSelect = true //if need to cancel gradient
+        //cocktails[indexPath.row].isSelect = true
+        cocktails[indexPath.row].isSelect.toggle() //if need to cancel gradient
     }
 }

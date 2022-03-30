@@ -15,6 +15,8 @@ protocol CocktailsListViewPresenterProtocol {
     
     func getCocktail(forItemAt indexPath: IndexPath) -> CocktailCollectionCellModel
     
+    func textDidChange(text: String)
+    
     //collection
     
     func getAmountOfItemsInSection(in section: Int) -> Int

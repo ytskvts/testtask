@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		69ACE333392B947D85DD86CF /* Pods_testtask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6AFA54420846BBB1CF95C5 /* Pods_testtask.framework */; };
+		D5530ED227F45814006C8132 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5530ED127F45814006C8132 /* GradientView.swift */; };
 		D5AAC2A427F0BFAE00A31DA2 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAC2A327F0BFAE00A31DA2 /* NetworkModel.swift */; };
 		D5AAC2A627F0D04B00A31DA2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAC2A527F0D04B00A31DA2 /* NetworkManager.swift */; };
 		D5AAC2AC27F0D47F00A31DA2 /* CocktailsListViewPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAC2AB27F0D47F00A31DA2 /* CocktailsListViewPresenterProtocol.swift */; };
@@ -15,6 +16,7 @@
 		D5AAC2B127F0D4A700A31DA2 /* CocktailsListViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAC2B027F0D4A700A31DA2 /* CocktailsListViewProtocol.swift */; };
 		D5AAC2B527F36A4100A31DA2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAC2B427F36A4100A31DA2 /* Model.swift */; };
 		D5AAC2B727F37F4A00A31DA2 /* CocktailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAC2B627F37F4A00A31DA2 /* CocktailsCollectionViewCell.swift */; };
+		D5B75AA627F4BD510076F6BD /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B75AA527F4BD510076F6BD /* Constant.swift */; };
 		D5CBB6C127F0BC8D00C5D593 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CBB6C027F0BC8D00C5D593 /* AppDelegate.swift */; };
 		D5CBB6C527F0BC8D00C5D593 /* CocktailsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CBB6C427F0BC8D00C5D593 /* CocktailsListViewController.swift */; };
 		D5CBB6CA27F0BC9100C5D593 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5CBB6C927F0BC9100C5D593 /* Assets.xcassets */; };
@@ -24,6 +26,7 @@
 /* Begin PBXFileReference section */
 		AA6AFA54420846BBB1CF95C5 /* Pods_testtask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testtask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67839BE81A21149F26BF2B4 /* Pods-testtask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testtask.debug.xcconfig"; path = "Target Support Files/Pods-testtask/Pods-testtask.debug.xcconfig"; sourceTree = "<group>"; };
+		D5530ED127F45814006C8132 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		D5AAC2A327F0BFAE00A31DA2 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		D5AAC2A527F0D04B00A31DA2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D5AAC2AB27F0D47F00A31DA2 /* CocktailsListViewPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsListViewPresenterProtocol.swift; sourceTree = "<group>"; };
@@ -31,6 +34,7 @@
 		D5AAC2B027F0D4A700A31DA2 /* CocktailsListViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsListViewProtocol.swift; sourceTree = "<group>"; };
 		D5AAC2B427F36A4100A31DA2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D5AAC2B627F37F4A00A31DA2 /* CocktailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		D5B75AA527F4BD510076F6BD /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		D5CBB6BD27F0BC8D00C5D593 /* testtask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testtask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5CBB6C027F0BC8D00C5D593 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5CBB6C427F0BC8D00C5D593 /* CocktailsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsListViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +129,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		D5B75AA727F4BD5E0076F6BD /* UIElements */ = {
+			isa = PBXGroup;
+			children = (
+				D5530ED127F45814006C8132 /* GradientView.swift */,
+			);
+			path = UIElements;
+			sourceTree = "<group>";
+		};
 		D5CBB6B427F0BC8C00C5D593 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +160,8 @@
 			children = (
 				D5AAC2A727F0D3E600A31DA2 /* CocktailsListModule */,
 				D5AAC2B327F369CF00A31DA2 /* Network */,
+				D5B75AA727F4BD5E0076F6BD /* UIElements */,
+				D5B75AA527F4BD510076F6BD /* Constant.swift */,
 				D5CBB6C027F0BC8D00C5D593 /* AppDelegate.swift */,
 				D5AAC2B227F0E33100A31DA2 /* Resources */,
 			);
@@ -273,8 +287,10 @@
 				D5AAC2AE27F0D48B00A31DA2 /* CocktailsListViewPresenter.swift in Sources */,
 				D5CBB6C527F0BC8D00C5D593 /* CocktailsListViewController.swift in Sources */,
 				D5AAC2A427F0BFAE00A31DA2 /* NetworkModel.swift in Sources */,
+				D5530ED227F45814006C8132 /* GradientView.swift in Sources */,
 				D5CBB6C127F0BC8D00C5D593 /* AppDelegate.swift in Sources */,
 				D5AAC2AC27F0D47F00A31DA2 /* CocktailsListViewPresenterProtocol.swift in Sources */,
+				D5B75AA627F4BD510076F6BD /* Constant.swift in Sources */,
 				D5AAC2A627F0D04B00A31DA2 /* NetworkManager.swift in Sources */,
 				D5AAC2B527F36A4100A31DA2 /* Model.swift in Sources */,
 			);

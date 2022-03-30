@@ -10,4 +10,5 @@ import Foundation
 struct CocktailCollectionCellModel {
     let name: String
     var isSelect: Bool
+    var isSearchable: Bool
 }

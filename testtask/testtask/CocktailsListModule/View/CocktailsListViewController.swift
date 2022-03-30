@@ -21,10 +21,11 @@ class CocktailsListViewController: UIViewController, CocktailsListViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let cocktailsCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
+    private lazy var cocktailsCollectionView: UICollectionView = {
+        let layout = createCompositionalLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collection.backgroundColor = .systemGreen
+        collection.backgroundColor = .systemBackground
+        collection.register(CocktailsCollectionViewCell.self, forCellWithReuseIdentifier: CocktailsCollectionViewCell.identifier)
         collection.translatesAutoresizingMaskIntoConstraints = false
         return collection
     }()
@@ -33,45 +34,118 @@ class CocktailsListViewController: UIViewController, CocktailsListViewProtocol {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Cocktail name"
-        textField.autocapitalizationType = .words
-        
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = #colorLiteral(red: 0, green: 0.5942070484, blue: 0.9925900102, alpha: 1)
+        //textField.autocapitalizationType = .words //all words uppercase
+        textField.textAlignment = .center
+        textField.backgroundColor = .white
+        textField.layer.cornerRadius = 10
+        textField.layer.shadowRadius = 9
+        textField.layer.shadowOpacity = 0.3
+        textField.layer.shadowOffset = CGSize(width: 5.0, height: 8.0)
+        textField.clipsToBounds = false
         
         textField.autocorrectionType = .no
         return textField
     }()
     
+    //MARK: LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cocktailsCollectionView.dataSource = self
         cocktailsCollectionView.delegate = self
-        cocktailsListViewPresenter?.fetchData()
-        view.backgroundColor = .systemRed
+        if let cocktailsListViewPresenter = cocktailsListViewPresenter {
+            cocktailsListViewPresenter.fetchData()
+        }
+        view.backgroundColor = .systemBackground
         setUIElements()
+        setNotifications()
+        setGestureForDismissKeyboard()
     }
     
-    func printData(data: [CocktailCollectionCellModel]) {
-        print(data)
-    }
-    
+    //MARK: Setup
     func setUIElements() {
         view.addSubview(cocktailsCollectionView)
         view.addSubview(searchingTextField)
+        
         searchingTextField.snp.makeConstraints { make in
             make.left.equalToSuperview().inset(50)
             make.right.equalToSuperview().inset(40)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(100)
             make.height.equalTo(40)
         }
+        
         cocktailsCollectionView.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(5)
-            //make.top.equalToSuperview().inset(5)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(5)
             make.bottom.equalTo(searchingTextField.snp.top).inset(-20)
         }
     }
-
+    
+    func setNotifications() {
+        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: nil, queue: nil) {_ in
+            self.textDidChange()
+        }
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil) { nc in
+            
+            guard let keyboardNSValue = nc.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+            let keyboardFrame = self.view.convert(keyboardNSValue.cgRectValue, from: self.view.window)
+            
+            self.searchingTextField.snp.remakeConstraints { make in
+                make.left.right.equalToSuperview()
+                make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(keyboardFrame.height - self.view.safeAreaInsets.bottom)
+                make.height.equalTo(40)
+            }
+            self.searchingTextField.layer.cornerRadius = 0
+        }
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { nc in
+            
+            self.searchingTextField.snp.remakeConstraints { make in
+                make.left.equalToSuperview().inset(50)
+                make.right.equalToSuperview().inset(40)
+                make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(100)
+                make.height.equalTo(40)
+            }
+            self.searchingTextField.layer.cornerRadius = 10
+        }
+    }
+    
+    func textDidChange() {
+        if let presenter = cocktailsListViewPresenter,
+           let text = searchingTextField.text {
+            presenter.textDidChange(text: text)
+            return
+        }
+        fatalError("CocktailsListViewController textDidChange method: presenter or text is optional")
+    }
+    
+    private func setGestureForDismissKeyboard() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func handleTap() {
+        searchingTextField.endEditing(true)
+    }
+    
+    //MARK: Setup CollectionView
+    
+    func createCompositionalLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(30.0), heightDimension: .absolute(30.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(30.0))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.interItemSpacing = .fixed(Constants.Spacing.interItemSpacing)
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 10, leading: 10, bottom: 10, trailing: 10)
+        section.interGroupSpacing = Constants.Spacing.interGroupSpacing
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
+    }
+    
+    func reloadCollectionViewData(data: [CocktailCollectionCellModel]) {
+        cocktailsCollectionView.reloadData()
+    }
 }
 
 extension CocktailsListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -98,4 +172,5 @@ extension CocktailsListViewController: UICollectionViewDataSource, UICollectionV
         presenter.didSelectItem(at: indexPath)
     }
     
+    // when wrote "func sizef" than xcode has been droped
 }

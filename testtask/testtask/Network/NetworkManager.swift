@@ -18,14 +18,10 @@ class NetworkManager {
         
     private init() {}
     
-    private let defaultURLString = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic"
 // Better do URLBuilder, but app is simple
-//    func fetchData<T: Decodable>(type: T.Type, with urlString: String completion: @escaping (Result<T, NetworkManagerErrorType>) -> Void) {
-//
-//    }
     
     func fetchData<T: Decodable>(type: T.Type, completion: @escaping (Result<T, NetworkManagerErrorType>) -> Void) {
-        AF.request(defaultURLString).responseJSON { response in
+        AF.request(Constants.URLString.defaultURLString).responseJSON { response in
             guard let rawData = response.data else {
                 completion(.failure(.missingData))
                 return
