@@ -9,7 +9,20 @@ import Foundation
 
 protocol CocktailsListViewPresenterProtocol {
     
-    var cocktails: [Cocktail] { get set }
+    var cocktails: [CocktailCollectionCellModel] { get set }
     
     func fetchData()
+    
+    func textDidChange(text: String)
+    
+    //collection
+    
+    func getCocktail(forItemAt indexPath: IndexPath) -> CocktailCollectionCellModel
+    
+    func getAmountOfItemsInSection(in section: Int) -> Int
+    
+    func didSelectItem(at indexPath: IndexPath)
+    
+    
+    
 }

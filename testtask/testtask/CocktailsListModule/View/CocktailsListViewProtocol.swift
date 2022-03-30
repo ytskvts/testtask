@@ -9,4 +9,5 @@ import Foundation
 
 protocol CocktailsListViewProtocol: AnyObject {
     
+    func reloadCollectionViewData(data: [CocktailCollectionCellModel])
 }

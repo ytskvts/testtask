@@ -1,16 +1,14 @@
 //
-//  CoctailModel.swift
+//  Model.swift
 //  testtask
 //
-//  Created by Dmitry on 27.03.22.
+//  Created by Dmitry on 29.03.22.
 //
 
 import Foundation
 
-struct Cocktail: Codable {
-  let cocktailName: String?
-}
-
-struct Cocktails: Codable {
-    let cocktails: [Cocktail]
+struct CocktailCollectionCellModel {
+    let name: String
+    var isSelect: Bool
+    var isSearchable: Bool
 }
